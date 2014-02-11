@@ -72,7 +72,7 @@ public class Problems {
 		int pivot = (begIndex + endIndex)/2;
 		System.out.println(begIndex+" "+pivot+" "+endIndex);
 		if(n == arr[pivot])
-			System.out.println(n);
+			System.out.println("Found: "+n);
 		else if(n < arr[pivot])
 			findInSortArray(n, begIndex, pivot-1);
 		else if(n > arr[pivot])
