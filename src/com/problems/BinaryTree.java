@@ -16,21 +16,14 @@ public class BinaryTree {
     public boolean isBinarySearchTree(Node n){
         if(n != null){
             if(n.getLeftChild() != null && n.getRightChild() != null){
-                if(n.getLeftChild().getValue() > n.getRightChild().getValue()){
-                    return false;
+                if(n.getLeftChild().getValue() < n.getValue() && n.getValue() > n.getRightChild().getValue()){
+                    isBinary = false;
                 } else {
-                    return true;
+                    isBinary = isBinarySearchTree(n.getLeftChild()) && isBinarySearchTree(n.getRightChild());;
                 }
             }
-        } else {
-            return false;
         }
-
-        isBinary = isBinarySearchTree(n.getLeftChild()) && isBinarySearchTree(n.getRightChild());
-
-
         return isBinary;
     }
-
 
 }
