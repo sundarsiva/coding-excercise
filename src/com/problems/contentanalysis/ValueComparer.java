@@ -6,7 +6,7 @@
  * ----------------------------- ***** -------------------------------
  */ 
 
-package com.problems.linkedin;
+package com.problems.contentanalysis;
 
 import java.util.Comparator;
 import java.util.Map;

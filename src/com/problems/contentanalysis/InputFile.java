@@ -3,7 +3,7 @@
  *  Created: Mar 13, 2010
  *  
  *  ----------------------------- ***** ------------------------------- */ 
-package com.problems.linkedin;
+package com.problems.contentanalysis;
 
 import org.apache.log4j.Logger;
 

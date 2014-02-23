@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.problems.jive;
+package com.problems;
 
 import java.util.ArrayDeque;
 import java.util.List;
