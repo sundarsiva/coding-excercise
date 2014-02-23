@@ -5,13 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a75a6839-8130-4840-a3bf-8552a484a1e7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sundarsiva/wordfrequency/SortByValue.java" afterPath="$PROJECT_DIR$/src/com/sundarsiva/wordfrequency/SortByValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/sundarsiva/wordfrequency/SortByValueTest.java" afterPath="$PROJECT_DIR$/test/com/sundarsiva/wordfrequency/SortByValueTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sundarsiva/wordfrequency/WordFrequency.java" afterPath="$PROJECT_DIR$/src/com/sundarsiva/wordfrequency/WordFrequency.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/sundarsiva/wordfrequency/WordFrequencyTest.java" afterPath="$PROJECT_DIR$/test/com/sundarsiva/wordfrequency/WordFrequencyTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="wordfrequency.iws" />
@@ -593,7 +586,11 @@
       <created>1393195685895</created>
       <updated>1393195685896</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="more tests. code analysis and source code comments">
+      <created>1393197450039</created>
+      <updated>1393197450040</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -639,7 +636,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="improved word seperation logic. added more tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved word seperation logic. added more tests" />
+    <MESSAGE value="more tests. code analysis and source code comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="more tests. code analysis and source code comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
