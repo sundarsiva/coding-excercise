@@ -27,6 +27,9 @@ public class SortByValue implements Comparator<String>{
 	}
 
     public List<String> getSortedWords(){
+        if(wordCount == null){
+            return null;
+        }
         List<String> words = new ArrayList<String>(wordCount.keySet());
         Collections.sort(words, this);
         return words;

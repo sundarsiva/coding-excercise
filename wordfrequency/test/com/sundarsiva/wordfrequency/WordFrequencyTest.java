@@ -71,18 +71,18 @@ public class WordFrequencyTest extends TestCase{
         wordCount.put("awesome", 5);
 
         //adding existing words to the map - count increments
-        Map<String, Integer> updateWordCount = wf.addToWordCountMap(wordCount, "great");
-        Integer count = updateWordCount.get("great");
+        wf.addToWordCountMap(wordCount, "great");
+        Integer count = wordCount.get("great");
         assertEquals(count.intValue(), 3);
 
         //adding existing words to the map - count increments
-        updateWordCount = wf.addToWordCountMap(wordCount, "awesome");
-        count = updateWordCount.get("awesome");
+        wf.addToWordCountMap(wordCount, "awesome");
+        count = wordCount.get("awesome");
         assertEquals(count.intValue(), 6);
 
         //adding new word to the map - count is 1
-        updateWordCount = wf.addToWordCountMap(wordCount, "new");
-        count = updateWordCount.get("new");
+        wf.addToWordCountMap(wordCount, "new");
+        count = wordCount.get("new");
         assertEquals(count.intValue(), 1);
     }
 

@@ -2,8 +2,9 @@ package com.sundarsiva.wordfrequency;
 
 import org.apache.log4j.Logger;
 
-import java.util.*;
-import java.util.regex.Pattern;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Sundar on 2/22/14.
@@ -22,7 +23,7 @@ public class WordFrequency {
 
         int textLength = text.length();
         Map<String, Integer> wordCountMap = new HashMap<String, Integer>();
-        StringBuffer sbWord = new StringBuffer();
+        StringBuilder sbWord = new StringBuilder();
         for(int i = 0; i < textLength; i++){
             //convert to lowercase to make word comparison case insensitive
             char c = Character.toLowerCase(text.charAt(i));
@@ -48,7 +49,7 @@ public class WordFrequency {
         return topWords;
     }
 
-    public Map<String, Integer> addToWordCountMap(Map<String, Integer> wordCount, String word){
+    public void addToWordCountMap(Map<String, Integer> wordCount, String word){
         log.debug(">addToWordCountMap");
 
         int count = 0;
@@ -61,7 +62,6 @@ public class WordFrequency {
 
         wordCount.put(word, ++count);
         log.debug("<addToWordCountMap");
-        return wordCount;
     }
 
     public boolean isEndOfWord(char c) {
