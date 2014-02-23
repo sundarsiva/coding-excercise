@@ -3,6 +3,7 @@ package com.sundarsiva.wordfrequency;
 import org.apache.log4j.Logger;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Created by Sundar on 2/22/14.
@@ -13,30 +14,38 @@ public class WordFrequency {
 
     public List<String> getTopWords(String text, int topCount){
         log.debug(">getTopWords");
-        List<String> topWords = null;
 
         if(text == null || topCount < 1){
             log.debug("<getTopWords");
-            return topWords;
+            return null;
         }
 
         int textLength = text.length();
         Map<String, Integer> wordCountMap = new HashMap<String, Integer>();
         StringBuffer sbWord = new StringBuffer();
         for(int i = 0; i < textLength; i++){
-            char c = text.charAt(i);
-            if(c != ' '){ //end of a word
+            //convert to lowercase to make word comparison case insensitive
+            char c = Character.toLowerCase(text.charAt(i));
+            if(!isEndOfWord(c) && i != textLength-1){ //end of a word
                 sbWord.append(c);
             } else {
-                addToWordCountMap(wordCountMap, sbWord.toString());
+                //don't include or consider blank space as a word
+                String word = sbWord.toString().trim();
+                if(word.length() > 0){
+                    log.debug("word: "+word);
+                    addToWordCountMap(wordCountMap, word);
+                }
                 sbWord.delete(0,sbWord.length());
             }
         }
 
-        topWords = new SortByValue(wordCountMap).getSortedWords();
+        List<String> topWords = new SortByValue(wordCountMap).getSortedWords();
+        if(topCount < topWords.size()){
+            topWords = topWords.subList(0, topCount);
+        }
 
         log.debug("<getTopWords");
-        return topWords.subList(0, topCount);
+        return topWords;
     }
 
     public Map<String, Integer> addToWordCountMap(Map<String, Integer> wordCount, String word){
@@ -55,5 +64,13 @@ public class WordFrequency {
         return wordCount;
     }
 
+    public boolean isEndOfWord(char c) {
+        //can improve this further by detecting more word seperation characters.
+        if(c == ' ' || c == ',' || c == ';' || c == '.' || c == '!'){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
