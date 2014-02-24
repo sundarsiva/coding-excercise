@@ -78,9 +78,8 @@ public class WordFrequency {
         log.debug("<addToWordCountMap");
     }
 
-<<<<<<< HEAD
     private final static char SPACE = ' ', COMMA = ',', SEMI_COLON = ';', PERIOD = '.', EXCLAMATION = '!';
-=======
+
     /**
      * Utility method to tell if the given character is a end-of-word character.
      * End of word characters is one of - , ; . ! blankspace
@@ -88,7 +87,6 @@ public class WordFrequency {
      * @param c the character to be tested if it is a end-of-word character
      * @return true if the character is end-of-word character. Else returns false
      */
->>>>>>> dcb722e05ef87e5763e7d2daeff360c6579f2d12
 
     public boolean isEndOfWord(char c) {
         //can improve this further by detecting more word seperation characters.
