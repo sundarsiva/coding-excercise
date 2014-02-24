@@ -24,11 +24,11 @@ public class WordFrequency {
         int textLength = text.length();
         Map<String, Integer> wordCountMap = new HashMap<String, Integer>();
         StringBuilder sbWord = new StringBuilder();
-        for(int i = 0; i < textLength; i++){
+        for(int charIndex = 0; charIndex < textLength; charIndex++){
             //convert to lowercase to make word comparison case insensitive
-            char c = Character.toLowerCase(text.charAt(i));
-            if(!isEndOfWord(c) && i != textLength-1){ //end of a word
-                sbWord.append(c);
+            char currentChar = Character.toLowerCase(text.charAt(charIndex));
+            if(!isEndOfWord(currentChar) && charIndex != textLength-1){ //end of a word
+                sbWord.append(currentChar);
             } else {
                 //don't include or consider blank space as a word
                 String word = sbWord.toString().trim();
@@ -36,7 +36,7 @@ public class WordFrequency {
                     log.debug("word: "+word);
                     addToWordCountMap(wordCountMap, word);
                 }
-                sbWord.delete(0,sbWord.length());
+                sbWord.setLength(0);//clear the string builder for the next word
             }
         }
 
