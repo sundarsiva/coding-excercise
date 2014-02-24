@@ -64,9 +64,11 @@ public class WordFrequency {
         log.debug("<addToWordCountMap");
     }
 
+    private final static char SPACE = ' ', COMMA = ',', SEMI_COLON = ';', PERIOD = '.', EXCLAMATION = '!';
+
     public boolean isEndOfWord(char c) {
         //can improve this further by detecting more word seperation characters.
-        if(c == ' ' || c == ',' || c == ';' || c == '.' || c == '!'){
+        if(c == SPACE || c == COMMA || c == SEMI_COLON || c == PERIOD || c == EXCLAMATION){
             return true;
         } else {
             return false;
