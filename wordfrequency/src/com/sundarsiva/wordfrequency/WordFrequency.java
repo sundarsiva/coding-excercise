@@ -32,11 +32,11 @@ public class WordFrequency {
         int textLength = text.length();
         Map<String, Integer> wordCountMap = new HashMap<String, Integer>();
         StringBuilder sbWord = new StringBuilder();
-        for(int i = 0; i < textLength; i++){
+        for(int charIndex = 0; charIndex < textLength; charIndex++){
             //convert to lowercase to make word comparison case insensitive
-            char c = Character.toLowerCase(text.charAt(i));
-            if(!isEndOfWord(c) && i != textLength-1){ //end of a word
-                sbWord.append(c);
+            char currentChar = Character.toLowerCase(text.charAt(charIndex));
+            if(!isEndOfWord(currentChar) && charIndex != textLength-1){ //end of a word
+                sbWord.append(currentChar);
             } else {
                 //don't include or consider blank space as a word
                 String word = sbWord.toString().trim();
@@ -44,7 +44,7 @@ public class WordFrequency {
                     log.debug("word: "+word);
                     addToWordCountMap(wordCountMap, word);
                 }
-                sbWord.delete(0,sbWord.length());
+                sbWord.setLength(0);//clear the string builder for the next word
             }
         }
 
@@ -78,6 +78,9 @@ public class WordFrequency {
         log.debug("<addToWordCountMap");
     }
 
+<<<<<<< HEAD
+    private final static char SPACE = ' ', COMMA = ',', SEMI_COLON = ';', PERIOD = '.', EXCLAMATION = '!';
+=======
     /**
      * Utility method to tell if the given character is a end-of-word character.
      * End of word characters is one of - , ; . ! blankspace
@@ -85,10 +88,11 @@ public class WordFrequency {
      * @param c the character to be tested if it is a end-of-word character
      * @return true if the character is end-of-word character. Else returns false
      */
+>>>>>>> dcb722e05ef87e5763e7d2daeff360c6579f2d12
 
     public boolean isEndOfWord(char c) {
         //can improve this further by detecting more word seperation characters.
-        if(c == ' ' || c == ',' || c == ';' || c == '.' || c == '!'){
+        if(c == SPACE || c == COMMA || c == SEMI_COLON || c == PERIOD || c == EXCLAMATION){
             return true;
         } else {
             return false;
