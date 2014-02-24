@@ -21,11 +21,15 @@ public class SortByValue implements Comparator<String>{
 		if (0 != c) {
 			return c;
         }
+        //if same value then compare the hashcode of key
 		Integer h1 = key1.hashCode(), h2 = key2.hashCode();
 		return h1.compareTo(h2);
 	}
 
     public List<String> getSortedWords(){
+        if(wordCount == null){
+            return null;
+        }
         List<String> words = new ArrayList<String>(wordCount.keySet());
         Collections.sort(words, this);
         return words;

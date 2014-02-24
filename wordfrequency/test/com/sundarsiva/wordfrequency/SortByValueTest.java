@@ -25,6 +25,7 @@ public class SortByValueTest extends TestCase{
     }
 
     public void testGetSortedWords(){
+        //sorted by value in descending order
         List<String> sortedWords = new SortByValue(wordCountMap).getSortedWords();
         assertNotNull(sortedWords);
         assertEquals(sortedWords.get(0), "fantastic");
@@ -33,5 +34,15 @@ public class SortByValueTest extends TestCase{
         assertEquals(sortedWords.get(3), "nice");
         assertEquals(sortedWords.get(4), "great");
         assertEquals(sortedWords.get(5), "new");
+
+        //empty map return empty list
+        wordCountMap = new HashMap<String, Integer>();
+        sortedWords = new SortByValue(wordCountMap).getSortedWords();
+        assertNotNull(sortedWords);
+        assertEquals(sortedWords.size(), 0);
+
+        //if map is null return list is also null
+        sortedWords = new SortByValue(null).getSortedWords();
+        assertNull(sortedWords);
     }
 }
