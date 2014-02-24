@@ -1,5 +1,7 @@
 package com.sundarsiva.wordfrequency;
 
+import org.apache.log4j.Logger;
+
 import java.util.*;
 
 /**
@@ -7,7 +9,9 @@ import java.util.*;
  */
 
 
-public class SortByValue implements Comparator<String>{
+public class SortByValue implements Comparator<String> {
+
+    private static Logger log = Logger.getLogger(SortByValue.class);
 
     private Map<String, Integer> wordCount = null;
 
@@ -16,7 +20,7 @@ public class SortByValue implements Comparator<String>{
      * @param wordCount the {@link java.util.Map} to the sorted by values
      */
 
-	public SortByValue(Map<String, Integer> wordCount){
+	public SortByValue(Map<String, Integer> wordCount) {
 		this.wordCount = wordCount;
 	}
 
@@ -38,12 +42,14 @@ public class SortByValue implements Comparator<String>{
      * @return {@link java.util.List} of words sorted by frequency
      */
 
-    public List<String> getSortedWords(){
-        if(wordCount == null){
-            return null;
+    public List<String> getSortedWords() {
+        log.debug(">getSortedWords");
+        if(wordCount == null) {
+            return Collections.EMPTY_LIST;
         }
         List<String> words = new ArrayList<String>(wordCount.keySet());
         Collections.sort(words, this);
+        log.debug("<getSortedWords");
         return words;
     }
 }

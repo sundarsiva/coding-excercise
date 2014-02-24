@@ -2,6 +2,7 @@ package com.sundarsiva.wordfrequency;
 
 import org.apache.log4j.Logger;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,29 +19,29 @@ public class WordFrequency {
      * Constructs a {@link java.util.List} of string representing most frequent words in a given text document
      * @param text Input text from which the most frequent words needs to be determined
      * @param topCount Number of most frequent words to be returned
-     * @return List of string containing the topCount number of words. {@literal null} if text is {@literal null} or topCount is less than 0.
+     * @return List of string containing the topCount number of words. Empty list if text is {@literal null} or topCount is less than 0.
      */
 
-    public List<String> getTopWords(String text, int topCount){
+    public List<String> getTopWords(String text, int topCount) {
         log.debug(">getTopWords");
 
-        if(text == null || topCount < 1){
+        if(text == null || topCount < 1) {
             log.debug("<getTopWords");
-            return null;
+            return Collections.EMPTY_LIST;
         }
 
         int textLength = text.length();
         Map<String, Integer> wordCountMap = new HashMap<String, Integer>();
         StringBuilder sbWord = new StringBuilder();
-        for(int charIndex = 0; charIndex < textLength; charIndex++){
+        for(int charIndex = 0; charIndex < textLength; charIndex++) {
             //convert to lowercase to make word comparison case insensitive
             char currentChar = Character.toLowerCase(text.charAt(charIndex));
-            if(!isEndOfWord(currentChar) && charIndex != textLength-1){ //end of a word
+            if(!isEndOfWord(currentChar) && charIndex != textLength-1) { //end of a word
                 sbWord.append(currentChar);
             } else {
                 //don't include or consider blank space as a word
                 String word = sbWord.toString().trim();
-                if(word.length() > 0){
+                if(word.length() > 0) {
                     log.debug("word: "+word);
                     addToWordCountMap(wordCountMap, word);
                 }
@@ -49,7 +50,7 @@ public class WordFrequency {
         }
 
         List<String> topWords = new SortByValue(wordCountMap).getSortedWords();
-        if(topCount < topWords.size()){
+        if(topCount < topWords.size()) {
             topWords = topWords.subList(0, topCount);
         }
 
@@ -63,14 +64,12 @@ public class WordFrequency {
      * @param word the word that needs to be added to the map
      */
 
-    public void addToWordCountMap(Map<String, Integer> wordCount, String word){
+    public void addToWordCountMap(Map<String, Integer> wordCount, String word) {
         log.debug(">addToWordCountMap");
 
-        int count = 0;
-        try{
-            count = wordCount.get(word);
-        } catch(NullPointerException npe){
-            //do nothing
+        Integer count = wordCount.get(word);
+        if(count == null) {
+            count = 0;
             log.debug(word+" - not present in the map yet");
         }
 
@@ -90,7 +89,7 @@ public class WordFrequency {
 
     public boolean isEndOfWord(char c) {
         //can improve this further by detecting more word seperation characters.
-        if(c == SPACE || c == COMMA || c == SEMI_COLON || c == PERIOD || c == EXCLAMATION){
+        if(c == SPACE || c == COMMA || c == SEMI_COLON || c == PERIOD || c == EXCLAMATION) {
             return true;
         } else {
             return false;

@@ -9,27 +9,30 @@ import java.util.Map;
 /**
  * Created by Sundar on 2/22/14.
  */
-public class WordFrequencyTest extends TestCase{
+public class WordFrequencyTest extends TestCase {
 
-    WordFrequency wf;
+    private WordFrequency wf;
 
     @Override
     protected void setUp() throws Exception {
         wf = new WordFrequency();
     }
 
-    public void testGetTopWords(){
-        //if input text is null expect null
+    public void testGetTopWords() {
+        //if input text is null expect a empty list
         List<String> topWords = wf.getTopWords(null, 2);
-        assertNull(topWords);
+        assertNotNull(topWords);
+        assertEquals(topWords.size(), 0);
 
-        //if count is less than 1 expect null
+        //if count is less than 1 expect a empty list
         topWords = wf.getTopWords("a lot of words", 0);
-        assertNull(topWords);
+        assertNotNull(topWords);
+        assertEquals(topWords.size(), 0);
 
         //fantastic - 4, awesome - 3, good 2
         String text = "Fantastic awesome fantastic. New good,. awesome fantastic; awesome! Fantastic, nice good.";
         List<String> sortedWords = wf.getTopWords(text, 3);
+        assertNotNull(sortedWords);
         assertEquals(sortedWords.size(), 3);
         assertEquals(sortedWords.get(0), "fantastic");
         assertEquals(sortedWords.get(1), "awesome");
@@ -62,10 +65,10 @@ public class WordFrequencyTest extends TestCase{
         sortedWords = wf.getTopWords(text, 5);
         assertEquals(sortedWords.size(), 5);
 
-        System.out.println(sortedWords.toString());
+        System.out.println("Top words: "+ sortedWords.toString());
     }
 
-    public void testAddToWordCountMap(){
+    public void testAddToWordCountMap() {
         Map<String, Integer> wordCount = new HashMap<String, Integer>();
         wordCount.put("great", 2);
         wordCount.put("awesome", 5);
@@ -86,7 +89,7 @@ public class WordFrequencyTest extends TestCase{
         assertEquals(count.intValue(), 1);
     }
 
-    public void testIsEndOfWord(){
+    public void testIsEndOfWord() {
         //word seperation characters
         boolean isEndOfWord = wf.isEndOfWord(' ');
         assertTrue(isEndOfWord);
