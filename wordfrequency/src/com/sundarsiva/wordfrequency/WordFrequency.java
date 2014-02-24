@@ -7,11 +7,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Sundar on 2/22/14.
+ * Class that generates a list of words based on frequency
  */
+
 public class WordFrequency {
 
     private static Logger log = Logger.getLogger(WordFrequency.class);
+
+    /***
+     * Constructs a {@link java.util.List} of string representing most frequent words in a given text document
+     * @param text Input text from which the most frequent words needs to be determined
+     * @param topCount Number of most frequent words to be returned
+     * @return List of string containing the topCount number of words. {@literal null} if text is {@literal null} or topCount is less than 0.
+     */
 
     public List<String> getTopWords(String text, int topCount){
         log.debug(">getTopWords");
@@ -49,6 +57,12 @@ public class WordFrequency {
         return topWords;
     }
 
+    /**
+     * Adds a string word to the given map. If the words is already present, increments the value count by 1
+     * @param wordCount the map to which the word needs to added or the count needs to be incremented
+     * @param word the word that needs to be added to the map
+     */
+
     public void addToWordCountMap(Map<String, Integer> wordCount, String word){
         log.debug(">addToWordCountMap");
 
@@ -64,7 +78,17 @@ public class WordFrequency {
         log.debug("<addToWordCountMap");
     }
 
+<<<<<<< HEAD
     private final static char SPACE = ' ', COMMA = ',', SEMI_COLON = ';', PERIOD = '.', EXCLAMATION = '!';
+=======
+    /**
+     * Utility method to tell if the given character is a end-of-word character.
+     * End of word characters is one of - , ; . ! blankspace
+     *
+     * @param c the character to be tested if it is a end-of-word character
+     * @return true if the character is end-of-word character. Else returns false
+     */
+>>>>>>> dcb722e05ef87e5763e7d2daeff360c6579f2d12
 
     public boolean isEndOfWord(char c) {
         //can improve this further by detecting more word seperation characters.
