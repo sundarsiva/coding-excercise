@@ -39,7 +39,7 @@ public class SortByValue implements Comparator<String> {
 
     /**
      * Returns a list of words in the descending order of occurence in the {@link java.util.Map}
-     * @return {@link java.util.List} of words sorted by frequency
+     * @return {@link java.util.List} of words sorted by frequency. Empty list if map is null
      */
 
     public List<String> getSortedWords() {
